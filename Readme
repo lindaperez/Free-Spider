@@ -1,0 +1,99 @@
+Project: Extracts relevant information from the site http://ru.tap.az/ 
+
+Are used the libraries Casperjs and phamtonjs. 
+TOOLS :::::::::::::::::::::::::::::::::::::::::::::::::::::::
+PhantomJS
+Casperjs
+
+
+Instalación phantomjs + casperjs
+Instalación de Phantomjs: First, install the development packages of the following tools and libraries: GNU C++ compiler, bison, flex, gperf, Perl, Ruby, SQLite, FreeType, FontConfig, OpenSSL, and ICU. The actual package names may vary from one distribution to another.
+
+
+sudo apt-get install build-essential g++ flex bison gperf ruby perl \
+libsqlite3-dev libfontconfig1-dev libicu-dev libfreetype6 libssl-dev \
+libpng-dev libjpeg-dev
+Download the file .zip 
+unzip phantomJs-2.0.0_File.zip
+mv phantomjs-2.0.0 /usr/local/share
+sudo ln -s /usr/local/share/phantomjs-2.0.0/ /usr/local/share/phantomjs
+sudo ln -s /usr/local/share/phantomjs/bin/phantomjs /usr/local/bin/phantomjs
+./build.sh
+Note: build.sh by default will launch parallel compile jobs depending on the available CPU cores, e.g. 4 jobs on a modern hyperthreaded dual-core processor. If necessary, e.g. when building on a virtual machine/server or other limited environment, reduce the jobs by passing a number, e.g ./build.sh --jobs 1 to set only one compile job at a time.
+Fuente: http://docs.casperjs.org/en/latest/installation.html
+
+
+Instalación de Casperjs:
+
+
+Descargar → Latest stable version: https://github.com/n1k0/casperjs/zipball/1.0.3 (zip)
+cd casperjs
+$ ln -sf `pwd`/bin/casperjs /usr/local/bin/casperjs
+
+
+Si aparece el error de phantom.casperPath modificar archivo Bootstrap ubicado en /usr/local/share/casperjs/bin/
+
+
+// phantom check
+
+
+
+
+if (!('phantom' in this)) {
+
+
+   console.error('CasperJS needs to be executed in a PhantomJS environment http://phantomjs.org/');
+
+
+} else {
+
+
+   if (phantom.version.major === 2) {
+
+
+
+
+       //setting other phantom.args if using phantomjs 2.x
+
+
+       var system = require('system');
+
+
+       var argsdeprecated = system.args;
+
+
+       argsdeprecated.shift();
+
+
+       phantom.args = argsdeprecated;
+
+
+   }
+
+
+}
+
+
+
+
+Finalmente
+$ phantomjs --version
+2.0.0
+$ casperjs --version
+1.0.2
+#
+
+
+Read →> Documentación
+Source: http://docs.casperjs.org/en/latest/modules/index.html
+
+Read →> Tutorial: 
+Source: http://docs.casperjs.org/en/latest/quickstart.html
+::::::::::::::::::::::::::::::
+
+
+To Run
+commad: casperjs crawler.js
+To Test
+commad: casperjs test testcrawler.js
+
