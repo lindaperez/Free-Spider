@@ -1,3 +1,5 @@
+Hi There!
+
 Project: Extracts relevant information from the site http://ru.tap.az/ 
 
 Are used the libraries Casperjs and phamtonjs. 
@@ -97,3 +99,6 @@ commad: casperjs crawler.js
 To Test
 commad: casperjs test testcrawler.js
 
+Contributin?
+
+Probably all the Classes, Ids, changed you can implement it again using this project as a guidance
